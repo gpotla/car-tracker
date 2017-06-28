@@ -8,7 +8,11 @@ import java.util.List;
 
 public interface VehicleRepository {
 
-    void insertVehicleInformation(List<Vehicle> vehicleList);
+    void insertVehicleInformation(Vehicle vehicle);
 
-    void updateReadings(Reading reading);
+    void updateVehicleInformation(Vehicle vehicle);
+
+    void recordVehicleReadings(Reading reading);
+
+    Vehicle findVehicleByVin(String vin);
 }

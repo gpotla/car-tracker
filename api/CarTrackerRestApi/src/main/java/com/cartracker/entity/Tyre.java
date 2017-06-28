@@ -1,6 +1,10 @@
 package com.cartracker.entity;
 
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+
+@Embeddable
 public class Tyre {
 
     private int frontLeft;

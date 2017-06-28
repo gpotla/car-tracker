@@ -9,5 +9,5 @@ public interface VehicleRecordsStoringService {
 
     void insertVehicleInformation(List<Vehicle> vehicleList);
 
-    void updateVehicleReadings(Reading reading);
+    void recordVehicleReadings(Reading reading);
 }

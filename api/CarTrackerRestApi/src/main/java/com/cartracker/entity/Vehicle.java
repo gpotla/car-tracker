@@ -3,11 +3,14 @@ package com.cartracker.entity;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
-@Component
+@Entity
 public class Vehicle {
 
+    @Id
     private String vin;
     private String make;
     private String model;

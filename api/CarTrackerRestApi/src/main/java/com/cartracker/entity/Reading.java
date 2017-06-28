@@ -2,11 +2,20 @@ package com.cartracker.entity;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.UUID;
 
 @Component
+@Entity
 public class Reading {
 
+    @Id
+    private String readingId;
     private String vin;
     private double latitude;
     private double longitude;
@@ -18,7 +27,14 @@ public class Reading {
     private boolean engineCoolantLow;
     private boolean cruiseControlOn;
     private int engineRpm;
+    @Embedded
     private Tyre tires;
+    @OneToMany
+    private List<Vehicle> vehicleList;
+
+    public Reading(){
+        this.readingId = UUID.randomUUID().toString();
+    }
 
     public String getVin() {
         return vin;

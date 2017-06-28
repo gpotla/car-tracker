@@ -29,7 +29,7 @@ public class CarTrackerRestApiController {
     produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void vehicleReadings(@RequestBody Reading reading){
 
-        vehicleRecordsStoringService.updateVehicleReadings(reading);
+        vehicleRecordsStoringService.recordVehicleReadings(reading);
 
     }
 }

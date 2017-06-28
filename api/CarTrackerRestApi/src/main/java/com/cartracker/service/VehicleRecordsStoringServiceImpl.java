@@ -5,6 +5,7 @@ import com.cartracker.entity.Vehicle;
 import com.cartracker.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,15 +15,21 @@ public class VehicleRecordsStoringServiceImpl implements VehicleRecordsStoringSe
     @Autowired
     VehicleRepository vehicleRepository;
 
+    @Transactional
     public void insertVehicleInformation(List<Vehicle> vehicleList) {
-
-        vehicleRepository.insertVehicleInformation(vehicleList);
-
+        for (Vehicle vehicle:vehicleList) {
+            Vehicle v = vehicleRepository.findVehicleByVin(vehicle.getVin());
+            if(v == null)
+                vehicleRepository.insertVehicleInformation(vehicle);
+            else
+                vehicleRepository.updateVehicleInformation(vehicle);
+        }
     }
 
-    public void updateVehicleReadings(Reading reading) {
+    @Transactional
+    public void recordVehicleReadings(Reading reading) {
 
-        vehicleRepository.updateReadings(reading);
+        vehicleRepository.recordVehicleReadings(reading);
 
     }
 
