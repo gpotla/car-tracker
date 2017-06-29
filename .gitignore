@@ -1,8 +1,10 @@
 .idea
 .gitkeep
-target
+*/target/**
 .gitignore
 build
 *.class
 .settings
 .metadata
+README.md
+
