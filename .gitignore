@@ -1,10 +1,11 @@
 .idea
 .gitkeep
-*/target/**
+api/CarTrackerRestApi/target/
 .gitignore
 build
 *.class
 .settings
 .metadata
 README.md
+
 
