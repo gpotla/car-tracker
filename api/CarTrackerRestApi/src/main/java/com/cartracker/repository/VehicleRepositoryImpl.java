@@ -1,5 +1,6 @@
 package com.cartracker.repository;
 
+import com.cartracker.entity.Alert;
 import com.cartracker.entity.Reading;
 import com.cartracker.entity.Vehicle;
 import org.springframework.stereotype.Repository;
@@ -28,5 +29,9 @@ public class VehicleRepositoryImpl implements VehicleRepository{
 
     public Vehicle findVehicleByVin(String vin) {
         return entityManager.find(Vehicle.class, vin);
+    }
+
+    public void createAlert(Alert alert) {
+        entityManager.persist(alert);
     }
 }

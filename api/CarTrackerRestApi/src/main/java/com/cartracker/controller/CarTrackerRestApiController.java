@@ -2,6 +2,7 @@ package com.cartracker.controller;
 
 import com.cartracker.entity.Reading;
 import com.cartracker.entity.Vehicle;
+import com.cartracker.service.AlertManagementService;
 import com.cartracker.service.VehicleRecordsStoringService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,6 +15,8 @@ public class CarTrackerRestApiController {
 
     @Autowired
     VehicleRecordsStoringService vehicleRecordsStoringService;
+    @Autowired
+    AlertManagementService alertManagementService;
 
     @CrossOrigin(origins = "http://mocker.egen.io")
     @RequestMapping(value = "/vehicles", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
@@ -30,6 +33,7 @@ public class CarTrackerRestApiController {
     public void vehicleReadings(@RequestBody Reading reading){
 
         vehicleRecordsStoringService.recordVehicleReadings(reading);
+        alertManagementService.checkingForAlerts(reading);
 
     }
 }

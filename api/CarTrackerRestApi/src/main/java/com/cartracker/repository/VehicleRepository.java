@@ -1,6 +1,7 @@
 package com.cartracker.repository;
 
 
+import com.cartracker.entity.Alert;
 import com.cartracker.entity.Reading;
 import com.cartracker.entity.Vehicle;
 
@@ -15,4 +16,6 @@ public interface VehicleRepository {
     void recordVehicleReadings(Reading reading);
 
     Vehicle findVehicleByVin(String vin);
+
+    void createAlert(Alert alert);
 }

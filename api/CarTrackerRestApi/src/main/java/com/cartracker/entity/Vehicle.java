@@ -1,8 +1,6 @@
 package com.cartracker.entity;
 
-
-import org.springframework.stereotype.Component;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
@@ -11,13 +9,16 @@ import java.sql.Timestamp;
 public class Vehicle {
 
     @Id
+    @Column(columnDefinition = "VARCHAR(50)")
     private String vin;
+    @Column(columnDefinition = "VARCHAR(20)")
     private String make;
+    @Column(columnDefinition = "VARCHAR(20)")
     private String model;
-    int year;
-    int redlineRpm;
-    int maxFuelVolume;
-    Timestamp lastServiceDate;
+    private int year;
+    private int redlineRpm;
+    private float maxFuelVolume;
+    private Timestamp lastServiceDate;
 
     public String getVin() {
         return vin;
@@ -59,11 +60,11 @@ public class Vehicle {
         this.redlineRpm = redlineRpm;
     }
 
-    public int getMaxFuelVolume() {
+    public float getMaxFuelVolume() {
         return maxFuelVolume;
     }
 
-    public void setMaxFuelVolume(int maxFuelVolume) {
+    public void setMaxFuelVolume(float maxFuelVolume) {
         this.maxFuelVolume = maxFuelVolume;
     }
 

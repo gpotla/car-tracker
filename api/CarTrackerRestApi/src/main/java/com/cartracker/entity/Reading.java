@@ -2,10 +2,7 @@ package com.cartracker.entity;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
@@ -15,13 +12,15 @@ import java.util.UUID;
 public class Reading {
 
     @Id
+    @Column(columnDefinition = "VARCHAR(50)")
     private String readingId;
+    @Column(columnDefinition = "VARCHAR(50)")
     private String vin;
     private double latitude;
     private double longitude;
     private Timestamp timestamp;
-    private int fuelVolume;
-    private float speed;
+    private float fuelVolume;
+    private int speed;
     private int engineHp;
     private boolean checkEngineLightOn;
     private boolean engineCoolantLow;
@@ -34,6 +33,10 @@ public class Reading {
 
     public Reading(){
         this.readingId = UUID.randomUUID().toString();
+    }
+
+    public String getReadingId() {
+        return readingId;
     }
 
     public String getVin() {
@@ -68,19 +71,19 @@ public class Reading {
         this.timestamp = timestamp;
     }
 
-    public int getFuelVolume() {
+    public float getFuelVolume() {
         return fuelVolume;
     }
 
-    public void setFuelVolume(int fuelVolume) {
+    public void setFuelVolume(float fuelVolume) {
         this.fuelVolume = fuelVolume;
     }
 
-    public float getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(float speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
