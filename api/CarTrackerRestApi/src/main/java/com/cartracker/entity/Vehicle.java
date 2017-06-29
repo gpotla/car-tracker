@@ -1,11 +1,17 @@
 package com.cartracker.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Vehicle.listAllVehicles",
+                query = "SELECT v FROM Vehicle v"),
+        @NamedQuery(name = "Vehicle.findByVin",
+                query = "SELECT v FROM Vehicle v WHERE v.vin=:paramVin")
+})
 public class Vehicle {
 
     @Id

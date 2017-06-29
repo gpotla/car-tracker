@@ -1,12 +1,34 @@
 package com.cartracker.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.cartracker.DTO.HighAlerts;
+import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
+/*@SqlResultSetMapping(name="NumberOfHighAlerts",
+        entities={
+                @EntityResult(entityClass=Vehicle.class, fields={
+                        @FieldResult(name="vin", column="vin"),
+                        @FieldResult(name="lastServiceDate", column="lastServiceDate"),
+                        @FieldResult(name="make", column="make"),
+                        @FieldResult(name="maxFuelVolume", column="maxFuelVolume"),
+                        @FieldResult(name="model", column="model"),
+                        @FieldResult(name="redlineRpm", column="redlineRpm"),
+                        @FieldResult(name="year", column="year")})},
+        columns={
+                @ColumnResult(name="numberOfHighAlerts")}
+)*/
+
+
+@SqlResultSetMapping(name="NumberOfHighAlerts",
+        classes = {
+                @ConstructorResult(targetClass = HighAlerts.class,
+                        columns = {@ColumnResult(name="vin"), @ColumnResult(name="make"),
+                                   @ColumnResult(name="model"), @ColumnResult(name="numberOfHighAlerts")}
+                )}
+)
 @Entity
 public class Alert {
 

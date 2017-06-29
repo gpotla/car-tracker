@@ -33,4 +33,9 @@ public class VehicleRecordsStoringServiceImpl implements VehicleRecordsStoringSe
 
     }
 
+    @Transactional
+    public List<Vehicle> listOfVehicles() {
+        return vehicleRepository.listOfVehicles();
+    }
+
 }

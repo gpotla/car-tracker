@@ -7,7 +7,6 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
-@Component
 @Entity
 public class Reading {
 

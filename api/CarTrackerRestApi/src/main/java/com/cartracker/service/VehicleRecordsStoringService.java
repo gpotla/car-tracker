@@ -10,4 +10,6 @@ public interface VehicleRecordsStoringService {
     void insertVehicleInformation(List<Vehicle> vehicleList);
 
     void recordVehicleReadings(Reading reading);
+
+    List<Vehicle> listOfVehicles();
 }

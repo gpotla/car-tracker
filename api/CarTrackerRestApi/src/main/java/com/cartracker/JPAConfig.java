@@ -29,8 +29,9 @@ public class JPAConfig {
         emf.setPackagesToScan("com.cartracker.entity");
 
         Properties properties = new Properties();
-        properties.put("hibernate.hbm2ddl.auto","create");
+        properties.put("hibernate.hbm2ddl.auto","validate");
         properties.put("hibernate.show_sql","true");
+        properties.put("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
         emf.setJpaProperties(properties);
         return emf;
     }
