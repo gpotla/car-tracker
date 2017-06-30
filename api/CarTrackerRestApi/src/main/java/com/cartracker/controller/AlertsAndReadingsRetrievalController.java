@@ -30,7 +30,7 @@ public class AlertsAndReadingsRetrievalController {
 
     public void vehicleHistoricalAlerts(String vehicleId){
 
-        // To be implement
+        // To be implement it is used by UI part
 
     }
 

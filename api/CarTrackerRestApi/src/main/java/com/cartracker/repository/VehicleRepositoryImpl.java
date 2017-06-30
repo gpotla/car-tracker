@@ -37,6 +37,8 @@ public class VehicleRepositoryImpl implements VehicleRepository{
         entityManager.persist(alert);
     }
 
+    // These methods to be used by UI part
+
     public List<HighAlerts> listOfHighAlerts() {
 
         /*Query query = entityManager.createNativeQuery("SELECT v.vin as vin, v.lastServiceDate as lastServiceDate, v.make as make, v.maxFuelVolume as maxFuelvolume, " +
@@ -50,7 +52,7 @@ public class VehicleRepositoryImpl implements VehicleRepository{
                 "FROM Vehicle left outer join Reading on Vehicle.vin = Reading.vin left outer join Alert on Reading.readingId = Alert.readingId\n" +
                 "WHERE Alert.alertType = 'High' and timestampdiff(hour, Reading.timestamp, UTC_TIMESTAMP()) <= 2\n" +
                 "GROUP BY Vehicle.vin, Vehicle.make, Vehicle.model\n" +
-                "ORDER BY numberOfHighAlerts;", "NumberOfHighAlerts");
+                "ORDER BY numberOfHighAlerts;", "NumberOfHighAlerts"); // sed UTC timestamp because mocker sending timestamp in UTC format
 
         System.out.println(query.getResultList().size());
         List<HighAlerts> result = query.getResultList();
@@ -61,6 +63,7 @@ public class VehicleRepositoryImpl implements VehicleRepository{
     public List<Vehicle> listOfVehicles() {
 
         // To be implement named query
+
         //TypedQuery<Vehicle> query = entityManager.createNamedQuery("Vehicle.listAllVehicles",Vehicle.class);
         //TypedQuery<Vehicle> query = entityManager.createQuery("SELECT vehicle FROM Vehicle vehicle", Vehicle.class);
         Query query = entityManager.createNativeQuery("select * from vehicle", Vehicle.class);
@@ -70,6 +73,8 @@ public class VehicleRepositoryImpl implements VehicleRepository{
 
     public List<Reading> vehicleReadingsHistory(String vin, int specifiedTime) {
         // To be implement named query
+        // specifie time will be choosen by user eg: past 30 min or 1 hour
+
         Query query = entityManager.createNativeQuery("select * from reading r\n" +
                 "where timestampdiff(minute, r.timestamp, UTC_TIMESTAMP()) <="+specifiedTime, Reading.class);
         return query.getResultList();
